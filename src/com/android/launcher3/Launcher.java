@@ -2617,6 +2617,8 @@ public class Launcher extends BaseDraggingActivity implements LauncherExterns,
         mUiInformation.putBoolean("is_background_dark", nightModeWantsDarkTheme);
 
         mClient.redraw(mUiInformation);
+        // We theme more things, we need to force a model reload.
+        mModel.forceReload();
 
         super.onExtractedColorsChanged(wallpaperColorInfo);
     }

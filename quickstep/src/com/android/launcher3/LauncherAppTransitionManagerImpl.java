@@ -578,6 +578,11 @@ public class LauncherAppTransitionManagerImpl extends LauncherAppTransitionManag
 
             @Override
             public void onUpdate(float percent) {
+                // Don't even try if surfaceApplier is null.
+                if(surfaceApplier == null) {
+                    return;
+                }
+
                 final float easePercent = AGGRESSIVE_EASE.getInterpolation(percent);
 
                 // Calculate app icon size.
