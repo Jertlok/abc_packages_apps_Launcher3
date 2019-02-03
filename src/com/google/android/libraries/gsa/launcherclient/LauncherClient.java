@@ -95,10 +95,10 @@ public class LauncherClient {
                     WindowManager.LayoutParams attributes = mWindow.getAttributes();
                     if ((Boolean) message.obj) {
                         attributes.x = mWindowShift;
-                        attributes.flags |= 512;
+                        attributes.flags |= 0x200;
                     } else {
                         attributes.x = 0;
-                        attributes.flags &= -513;
+                        attributes.flags &= 0xFDFF;
                     }
                     mWindowManager.updateViewLayout(mWindow.getDecorView(), attributes);
                     return true;
@@ -171,7 +171,7 @@ public class LauncherClient {
 
     public final void onPause() {
         if (!mDestroyed) {
-            mActivityState &= -3;
+            mActivityState &= 0xFFFFFFFD;
             if (mOverlay != null && mLayoutParams != null) {
                 try {
                     if (apiVersion < 4) {
